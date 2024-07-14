@@ -1,6 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
   const entradaBusqueda = document.getElementById("entrada-busqueda");
   const contenedorResultados = document.getElementById("resultados");
+  const cambiarTema = document.getElementById("cambiar-tema");
+
+  // Establecer tema inicial basado en la preferencia del usuario o configuración del sistema
+  const usuarioPrefiereOscuro =
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const temaGuardado =
+    localStorage.getItem("tema") ||
+    (usuarioPrefiereOscuro ? "oscuro" : "claro");
+  document.documentElement.setAttribute("data-tema", temaGuardado);
+
+  cambiarTema.addEventListener("click", () => {
+    const temaActual = document.documentElement.getAttribute("data-tema");
+    const nuevoTema = temaActual === "oscuro" ? "claro" : "oscuro";
+    document.documentElement.setAttribute("data-tema", nuevoTema);
+    localStorage.setItem("tema", nuevoTema);
+  });
 
   async function buscarUsuarios(terminoBusqueda) {
     try {

@@ -62,6 +62,15 @@ body {
   --color-boton-texto: #ffffff;
 }
 
+[data-tema="oscuro"] {
+  --color-fondo: #121212;
+  --color-texto: #ffffff;
+  --color-tarjeta-fondo: #1e1e1e;
+  --color-tarjeta-hover-fondo: #333333;
+  --color-boton-fondo: #444444;
+  --color-boton-texto: #ffffff;
+}
+
 @media (max-width: 600px) {
   .tarjeta-usuario {
     flex-direction: column;
